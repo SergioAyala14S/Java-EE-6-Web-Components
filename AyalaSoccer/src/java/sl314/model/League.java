@@ -4,16 +4,25 @@ public class League {
 
     private int year;
     private String season;
+    private String name;
 
     public League() {
     }
 
     public League(int year, String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.year = year;
+        this.name = name;
     }
 
-  
-    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     
     public int getYear() {
         return year;
