@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+    <context-param>
+        <!-- Alcance al nivel de aplicacion -->
+        <param-name>userInitContextParam</param-name>
+        <param-value>sergio</param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>passInitContextParam</param-name>
+        <param-value>sergio</param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>currentLeagueName</param-name>
+        <param-value>Liga Bancomer</param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>currentYear</param-name>
+        <param-value>2015</param-value>
+    </context-param>
+    
+    
+    <listener>
+        <description>ServletContextListener</description>
+        <listener-class>sl314.listeners.SoccerApplicationListener</listener-class>
+    </listener>
+    <!--   
+    <context-param>
+        <param-name>adminEmail</param-name>
+        <param-value>mendozalivs@gmail.com</param-value>
+    </context-param>
+    <listener>
+        <description>ServletContextListener</description>
+        <listener-class>sl314.listeners.SoccerApplicationListener</listener-class>
+    </listener>-->
+    <servlet>
+        <servlet-name>ListLeaguesServlet</servlet-name>
+        <servlet-class>sl314.control.ListLeaguesServlet</servlet-class>
+        <init-param>
+            <param-name>adminMail</param-name>
+            <param-value>mendozalivs@gmail.com</param-value>
+        </init-param>
+        <init-param>
+            <param-name>mainMail</param-name>
+            <param-value>mendozalivs@gmail.com </param-value>
+        </init-param>
+    </servlet>
+    <!-- <servlet>
+        <servlet-name>AddLeagueServlet</servlet-name>
+        <servlet-class>sl314.control.AddLeagueServlet</servlet-class>
+    </servlet>-->
+    <servlet-mapping>
+        <servlet-name>ListLeaguesServlet</servlet-name>
+        <url-pattern>/ListLeaguesServlet</url-pattern>
+    </servlet-mapping>
+    <!-- <servlet-mapping> se agrego list_leagues
+        <servlet-name>AddLeagueServlet</servlet-name>
+        <url-pattern>/AddLeagueServlet.do</url-pattern>
+    </servlet-mapping>-->
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>sl314.control.LoginServlet</servlet-class>
+        <init-param>
+            <param-name>support</param-name>
+            <param-value>support@soccer.com</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login.do</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>1</session-timeout>
+    </session-config>
+    <error-page>
+        <!--   <exception-type>java.lang.ArithmeticException</exception-type> -->
+        <error-code>500</error-code>
+        <location>/error.jsp </location>
+    </error-page>
+</web-app>
